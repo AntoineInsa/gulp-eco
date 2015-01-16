@@ -17,7 +17,7 @@ module.exports = function (opt) {
 
     JSTpath = path.dirname(file.path) + '/' + path.basename(file.path, '.eco');
     var re = new RegExp('.*\/' + opt.basePath + '\/?');  // match basePath + optional path separator
-    JSTpath = JSTpath.replace(re, '');
+    JSTpath = JSTpath.replace(re, '').replace(/\..+?$/, '');
 
     var str = file.contents.toString();
     output = eco.compile(str) + ';';
